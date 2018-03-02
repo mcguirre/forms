@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <style> 
+        .hidden{
+            display : none;
+        }
+         #question1{
+             display :none;
+         }
+        </style>
+    </head>
+    <body>
+        <p style="color:red">Click on the question to move to the next</p>
+        <div id="firstquestion">
+                <p id='first'>Are you a male or a female</p>
+                <input type="text" name="first" />   
+        </div>
+        
+        <div class ="hidden" id="question1-male">
+                <p id='first-male'>Early 20's</p>
+                <input type="text" name="first-male" placeholder="yes" />  
+        </div>
+
+        <div class ="hidden" id="question1-female">
+                <p id='first-female'>middle 20's</p>
+                <input type="text" name="first-female" placeholder="no" />
+        </div>
+        <div class ="hidden" id="question2-male">
+                <p id='second-male'>Relegion - male</p>
+                <input type="text" name="second-male"  placeholder="christain"  />
+        </div>
+        <div class ="hidden" id="question2-female">
+                <p id='second-female'>Religion - female</p>
+                <input type="text" name="second-female"  placeholder="muslim"/>
+        </div>
+        <div class ="hidden" id="question3-male">
+                <p id='third-male'>Are you a student or working? - male</p>
+                <input type="text" name="third-male"  placeholder="student"/>
+        </div>
+        <div class ="hidden" id="question3-female">
+                <p id='third-female'>Are you a student or working? - female</p>
+                <input type="text" name="third-female"  placeholder="working" />
+        </div>
+        <div class ="hidden" id="question4-male">
+                <p id='fourth-male'>Are you a Nigerian or Non-nigerian - male</p>
+                <input type="text" name="fourth-male"   placeholder="nigerian"/>
+        </div>
+        <div class ="hidden" id="question4-female">
+                <p id='fourth-female'>Are you a Nigerian or Non-nigerian - female</p>
+                <input type="text" name="fourth-female"  placeholder="non-nigerian" />
+        </div>
+        <button id="submit" class="hidden">Submit</button>
+        <div class="message"></div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script>
+        
+            $('#first').click(function(){
+            //   console.log($('#first').val());
+                if($('input[name="first"]').val() == 'male'){
+                    $('#question1-male').css('display' ,'block');
+                    $('#first-male').click(function(){
+                        if($('input[name="first-male"]').val() == 'yes'){
+                            $('#question2-male').css('display' ,'block');
+                            $('#second-male').click(function(){
+                                if($('input[name="second-male"]').val() == 'christain'){
+                                    $('#question3-male').css('display' ,'block');
+                                    $('#third-male').click(function(){
+                                        console.log($('input[name="third-male"]').val());
+                                        if($('input[name="third-male"]').val() == 'student'){
+                                            $('#question4-male').css('display' ,'block');
+                                            $('#fourth-male').click(function(){
+                                                if($('input[name="fourth-male"]').val() == 'nigerian'){
+                                                    $('#submit').css('display' ,'block');
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+                else if($('input[name="first"]').val() == 'female') {
+                    $('#question1-female').css('display' ,'block');
+                     $('#first-female').click(function(){
+                        if($('input[name="first-female"]').val() == 'no'){
+                            $('#question2-female').css('display' ,'block');
+                            $('#second-female').click(function(){
+                                if($('input[name="second-female"]').val() == 'muslim'){
+                                    $('#question3-female').css('display' ,'block');
+                                    $('#third-female').click(function(){
+                                        if($('input[name="third-female"]').val() == 'working'){
+                                            $('#question4-female').css('display' ,'block');
+                                            $('#fourth-female').click(function(){
+                                                if($('input[name="fourth-female"]').val() == 'non-nigerian'){
+                                                    $('#submit').css('display' ,'block');
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+            $('#submit').click(function(){
+                $('.message').append('<p style="color:blue">Thanks for answering. Have a good day</p>')
+            })
+        
+    </script>
+</html>
